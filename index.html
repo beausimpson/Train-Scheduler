@@ -24,17 +24,47 @@
 
     <div class="container">
         <div class="jumbotron">
-            
+            <h1 class="display-4">Train Schedular</h1>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-
+                    <div id="train-schedule-headline" class="card-header">
+                        <h3>Current Train Schedule</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover" id="train-schedule">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Mins Away</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-
+                    <div id="add-train-headline">
+                        <h3>Add Train</h3>
+                    </div>
+                    <div id="add-train">
+                        <h4>Train Name</h4>
+                        <input type="text" name="" id="train-name">
+                        <h4>Destination</h4>
+                        <input type="text" name="" id="train-destination">
+                        <h4>First Train Time (HH:mm Military Time)</h4>
+                        <input type="text" name="" id="first-train">
+                        <h4>Train Frequency (min)</h4>
+                        <input type="text" name="" id="train-frequency">
+                        <button id="add-train-btn">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
