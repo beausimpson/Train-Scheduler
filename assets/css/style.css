@@ -1,0 +1,20 @@
+
+/* jumbotron */
+.jumbotron {
+    text-align: center
+}
+
+/* train input */
+.info-box {
+    border: 2px solid #00ffff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    margin-top: 10px;
+}

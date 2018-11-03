@@ -20,6 +20,9 @@ var trainDestination = "";
 var firstTrain = "";
 var trainFrequency = "";
 
+// train sound variable
+var trainSound = new Audio("assets/audio/Train_Honk_Horn_2x.wav")
+
 
 $("#add-train-btn").on("click", function (event) {
     event.preventDefault();
@@ -52,14 +55,17 @@ $("#add-train-btn").on("click", function (event) {
     console.log(newTrain.destination);
     console.log(newTrain.trainStart);
     console.log(newTrain.frequency);
-
-
+    
+    
     // Clears all of the text-boxes
     $("#train-name").val("");
     $("#train-destination").val("");
     $("#first-train").val("");
     $("#train-frequency").val("");
-
+    
+    // plays train sound
+    trainSound.play();
+    
 });
 
 // Firebase watcher .on("child_added"
@@ -77,7 +83,7 @@ database.ref().on("child_added", function (childSnapshot) {
     var tFrequency = 3;
 
     var firstTrain = moment.unix(sv.trainStart).format("hh:mm A");
-    var firstTrainConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+    var firstTrainConverted = moment(firstTrain, "HH:mm");
     console.log("First Train: " + firstTrain);
 
     var currentTime = moment(currentTime).format("hh:mm");
