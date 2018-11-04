@@ -79,12 +79,11 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log("Train Frequency: " + sv.frequency);
     console.log("-------------------------")
 
-    // Assumptions
-    var tFrequency = 3;
 
     var firstTrain = moment.unix(sv.trainStart).format("hh:mm A");
     var firstTrainConverted = moment(firstTrain, "HH:mm");
     console.log("First Train: " + firstTrain);
+    
 
     var currentTime = moment(currentTime).format("hh:mm");
     console.log("Current Time: " + currentTime);
@@ -94,16 +93,16 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log("Differant Time: " + diffTime)
 
     // Time apart (remainder)
-    var remainder = diffTime % tFrequency;
+    var remainder = diffTime % sv.frequency;
     console.log("Time Apart: " + remainder);
 
     // Minute Until Train
-    var minutesTillTrain = tFrequency - remainder;
+    var minutesTillTrain = sv.frequency - remainder;
     console.log("MINUTES TILL TRAIN: " + minutesTillTrain);
 
     // Next Train
     var nextTrain = moment().add(minutesTillTrain, "minutes").format("hh:mm A");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    console.log("ARRIVAL TIME: " + nextTrain);
 
     console.log("-------------------------")
 
@@ -115,9 +114,16 @@ database.ref().on("child_added", function (childSnapshot) {
             <td>Every ${sv.frequency} mins</td>
             <td>${nextTrain}</td>
             <td>${minutesTillTrain}</td>
-        </tr>`
-    );
-
-
-})
+            </tr>`
+            );
+            
+            
+        })
+        
+        // delete button
+        // <td><button id="delete">X</button></td>
+        // delete functinality not quite working yet
+        $("#delete").on("click", function(){
+            database.ref().child('train').remove();
+        });
 
