@@ -55,17 +55,17 @@ $("#add-train-btn").on("click", function (event) {
     console.log(newTrain.destination);
     console.log(newTrain.trainStart);
     console.log(newTrain.frequency);
-    
-    
+
+
     // Clears all of the text-boxes
     $("#train-name").val("");
     $("#train-destination").val("");
     $("#first-train").val("");
     $("#train-frequency").val("");
-    
+
     // plays train sound
     trainSound.play();
-    
+
 });
 
 // Firebase watcher .on("child_added"
@@ -83,7 +83,7 @@ database.ref().on("child_added", function (childSnapshot) {
     var firstTrain = moment.unix(sv.trainStart).format("hh:mm A");
     var firstTrainConverted = moment(firstTrain, "HH:mm");
     console.log("First Train: " + firstTrain);
-    
+
 
     var currentTime = moment(currentTime).format("hh:mm");
     console.log("Current Time: " + currentTime);
@@ -115,15 +115,15 @@ database.ref().on("child_added", function (childSnapshot) {
             <td>${nextTrain}</td>
             <td>${minutesTillTrain}</td>
             </tr>`
-            );
-            
-            
-        })
-        
-        // delete button
-        // <td><button id="delete">X</button></td>
-        // delete functinality not quite working yet
-        $("#delete").on("click", function(){
-            database.ref().child('train').remove();
-        });
+    );
+
+
+});
+
+// delete button
+// <td><button id="delete">X</button></td>
+// delete functinality not quite working yet
+$("#delete").on("click", function () {
+    database.ref().child('train').remove();
+});
 
